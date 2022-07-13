@@ -1,0 +1,35 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_view_rejected_worker_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right" >
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" class="form-control" /></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table  class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>Name</td>
+      <td>Gender</td>
+      <td>DOB</td>
+      <td>Address</td>
+      <td>Contact</td>
+
+      <td>Work description </td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>&nbsp;{{ forloop.counter}}</td>
+     <td align="center"><img src="{{ i.image }}" height="80" width="80"/><br>{{i.name}}</td>
+      <td>&nbsp;{{ i.gender }}</td>
+      <td>&nbsp;{{ i.dob }}</td>
+      <td>&nbsp;{{ i.house_name }}<br>&nbsp;{{ i.city }}<br>&nbsp;{{ i.district }}<br>&nbsp;{{ i.pin }}</td>
+      <td>&nbsp;{{ i.phone }}<br>&nbsp;{{ i.email }}</td>
+      <td>&nbsp;{{ i.description }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_upload_resume_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-bordered">
+    <tr>
+      <td>Resume</td>
+      <td><input type="file" name="file" class="form-control" required/></td>
+    </tr>
+    <tr>
+      
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Upload" class="btn btn-success"  onclick="return confirm('Are you sure?')" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

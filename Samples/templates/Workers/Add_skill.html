@@ -1,0 +1,37 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_add_skill_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right">
+    <tr>
+      <td>Skill</td>
+      <td><select name="select" class="form-control">
+        {% for i in data %}
+        <option value="{{ i.id }}">{{i.skill}}
+        </option>
+        {% endfor %}
+      </select></td>
+      </td>
+      <td><input type="submit" name="Submit" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td colspan="4">Added skills </td>
+    </tr>
+    <tr>
+      <td>sl.no</td>
+      <td>Skill name</td>
+      <td>&nbsp;</td>
+    </tr>
+
+    {% for i in data2 %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{i.SKILL.skill}}</td>
+
+      <td><a href="/newapp/worker_delete_skill/{{i.id}}" class="btn btn-danger" onclick="return confirm('Are you sure to remove?')">Remove</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

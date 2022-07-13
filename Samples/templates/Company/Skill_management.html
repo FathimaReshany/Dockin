@@ -1,0 +1,38 @@
+{% extends "company_index.html" %}
+{% block body %}
+<form action="/newapp/skill_management_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right"  >
+    <tr>
+      <td>Skills<input type="hidden" name="vid" value="{{vaccancy_id}}" class="form-control"></td>
+      <td><select name="select" class="form-control">
+        {% for i in data %}
+        <option value="{{ i.id }}">{{i.skill}}
+        </option>
+        {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table  class="table table-bordered">
+
+  <tr>
+    <td>sl.no</td>
+    
+    <td>skill  </td>
+    <td></td>
+    
+  </tr>
+  {% for i in vaccancy_skill %}
+  <tr>
+    <td>{{ forloop.counter }}</td>
+    
+    <td>{{ i.SKILLS.skill}}</td>
+    
+      <td><a href="/newapp/company_delete_skill/{{i.id}}/{{vaccancy_id}}" class="btn btn-danger"  onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+  </tr>
+  {% endfor %}
+</table>
+</form>
+{% endblock %}

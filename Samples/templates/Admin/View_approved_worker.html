@@ -1,0 +1,46 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_view_approved_worker_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right"   >
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" class="form-control" /></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table  class="table table-bordered" bgcolor="black">
+    <tr>
+      <td width="1%">sl.no</td>
+      <td width="10%">Name</td>
+      <td width="10%">Gender</td>
+      <td width="10%">DOB</td>
+      <td width="10%">Address</td>
+      <td width="10%">Contact</td>
+
+      <td width="20%">Work description </td>
+      <td></td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+     <td align="center"><img src="{{ i.image }}" height="80" width="80"/><br>{{i.name}}</td>
+
+      <td>&nbsp;{{ i.gender }}</td>
+      <td>&nbsp;{{ i.dob }}</td>
+      <td>&nbsp;{{ i.house_name }}<br>&nbsp;{{ i.city }}<br>&nbsp;{{ i.district }}<br>&nbsp;{{ i.pin }}</td>
+      <td>&nbsp;{{ i.phone }}<br>{{ i.email }}</td>
+      <td>&nbsp;{{ i.description }}</td>
+      <td>
+        {% if i.LOGIN.logintype == "worker" %}
+            <a href="/newapp/admin_block_worker/{{i.LOGIN_id}}" class="btn btn-danger">Block</a>
+        {% else %}
+            <a href="/newapp/admin_unblock_worker/{{i.LOGIN_id}}" class="btn btn-success">Unblock</a>
+         {% endif %}
+        
+
+       </td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

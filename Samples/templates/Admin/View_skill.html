@@ -1,0 +1,28 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_viewskill_load_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right" >
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" class="form-control" /></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+	</table>
+	<table  class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>Skill name</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter}}</td>
+      <td>{{ i.skill }}</td>
+      <td><a href="/newapp/admin_editskill_load/{{ i.id }}" class="btn btn-info">Edit</a></td>
+      <td><a href="/newapp/admin_delete_skill/{{ i.id }}" class="btn btn-danger"  onclick="return confirm('Are you sure to delete?')">Delete</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

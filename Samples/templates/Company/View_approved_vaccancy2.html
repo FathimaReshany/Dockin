@@ -1,0 +1,100 @@
+{% extends "company_index.html" %}
+{% block body %}
+
+  
+
+  <div id="my_div">
+  <table  class="table " style="width:600px;">
+
+    <tr>
+      <td rowspan="2"><img src="{{ data.image}}" height="100" width="100"/></td>
+      <td>Name</td>
+      <td>{{data.name}}</td>
+    </tr>
+    <tr>
+      <td>Address</td>
+      <td>{{data.district}}<br>
+        {{data.city}}<br>
+        {{data.pin}}<br>
+        {{data.phone}}<br>
+        {{data.email}}<br>
+      </td>
+
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td colspan="2">Skills</td>
+    </tr>
+    <tr>
+      <td>sl.no.</td>
+      <td>Skillname</td>
+    </tr>
+    {% for i in skill_obj %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{i.SKILL.skill}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td colspan="2">Previous works </td>
+    </tr>
+    
+    <tr>
+      <td>sl.no.</td>
+      <td>Works</td>
+    </tr>
+  {% for i in works_obj %}
+    <tr>
+      <td>{{ forloop.counter}}</td>
+
+      <td><img src="{{i.works_image}}" height="50" width="50"/><br>
+        {{ i.title}}<br>
+        {{ i.description}}<br>
+        {{ i.amount}}<br>
+
+
+
+      </td>
+    </tr>
+  {% endfor %}
+  </table>
+  </div>
+  <br>
+
+{#    #}
+{#    #}
+  <div align="right" >
+    <button onclick="printDiv('my_div','Title')" class="btn btn-success">Download</button>
+  </div>&nbsp;&nbsp;&nbsp;
+  <br>
+</form>
+<script>
+var doc = new jsPDF();
+
+ function printDiv(divId,
+  title) {
+
+  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+  mywindow.document.write('<html><head><title>${title}</title>');
+  mywindow.document.write('</head><body >');
+  mywindow.document.write(document.getElementById(divId).innerHTML);
+  mywindow.document.write('</body></html>');
+
+  mywindow.document.close(); // necessary for IE >= 10
+  mywindow.focus(); // necessary for IE >= 10*/
+
+  mywindow.print();
+  // mywindow.close();
+
+  return true;
+}
+</script>
+{#    #}
+{#    #}
+
+
+{% endblock %}

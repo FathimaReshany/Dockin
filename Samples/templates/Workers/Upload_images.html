@@ -1,0 +1,31 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_upload_work_images_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table style="width: 500px;" align="center" class="table table-bordered">
+    <tr>
+      <td>Image</td>
+      <td><input type="file" name="file" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Upload" class="btn btn-success"  /></td>
+    </tr>
+  </table>
+<br>
+<h2>Gallery</h2>
+<div class="container">
+    <div class="row">
+        {% for i in data %}
+            <div align="center" class="col-md-3">
+                <div class="card">
+                    <img class="card-img-top" src="{{i.path}}" height="150" width="150"/><br>
+                    <div class="card-body">
+                        <a href="/newapp/workers_remove_work_images_post/{{i.id}}" class="btn btn-danger" onclick="return confirm('Are you sure?')">Remove</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+</form>
+{% endblock %}

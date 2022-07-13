@@ -1,0 +1,30 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_view_block_request_from_user_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right" >
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" class="form-control" /></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table  class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>User Info </td>
+      <td>Worker Info </td>
+      <td>Description </td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td><img src="{{ i.USER.image }}" height="50" width="50"/><br>{{ i.USER.name}}<br>{{ i.USER.phone }}</td>
+      <td><img src="{{ i.WORKER.image }}" height="50" width="50"/><br>{{ i.WORKER.name}}<br>{{ i.WORKER.phone }}</td>
+      <td>{{ i.description }}</td>
+      <td><a href="/newapp/admin_block_worker_by_request/{{i.WORKER.LOGIN.id}}/{{i.id}}" class="btn btn-danger" onclick="return confirm('Are you sure to block?')">Block</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

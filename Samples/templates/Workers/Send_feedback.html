@@ -1,0 +1,42 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_send_feedback_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right">
+    <tr>
+      <td colspan="3">Your feedback </td>
+    </tr>
+    <tr>
+      
+      <td><textarea name="textarea" class="form-control" required></textarea></td>
+      <td><input type="submit" name="Submit" value="Send" class="btn btn-success"  /></td>
+    </tr>
+  </table>
+
+  {% for i in data %}
+    <br>
+    <table class="table table-bordered">
+      <tr>
+        <td rowspan="4"><img src="{{i.wimage}}" height="50" width="50"/></td>
+        <th>Name</th>
+        <td>{{ i.wname }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ i.wemail }}</td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td>{{i.wphone }}</td>
+      </tr>
+      <tr>
+        <th>Posted on</th>
+        <td>{{i.feedback_date}}</td>
+      </tr>
+      <tr>
+        <td colspan="3">Feedback :<br><b>{{i.feedback}}</b></td>
+      </tr>
+    </table>
+    {% endfor %}
+  
+</form>
+{% endblock %}

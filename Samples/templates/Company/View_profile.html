@@ -1,0 +1,49 @@
+{% extends "company_index.html" %}
+{% block body %}
+<form action="/newapp/company_view_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-bordered">
+    <tr>
+      <td><img src="{{data.image}}" height="50" width="50"/></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{data.company_name}}</td>
+    </tr>
+    <tr>
+      <td>Estabished in </td>
+      <td>{{data.year}}</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>{{data.state}}</td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td>{{data.district}}</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>{{data.city}}</td>
+    </tr>
+
+    <tr>
+      <td>Pin </td>
+      <td>{{data.pin}}</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>{{data.phone}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{data.email}}</td>
+    </tr>
+    <tr>
+      <td>Company description </td>
+      <td>{{data.description}}</td>
+    </tr>
+      <tr><td><a href="/newapp/company_edit_profile/" class="btn btn-info">EDIT</a></td></tr>
+  </table>
+</form>
+{% endblock %}

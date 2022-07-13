@@ -1,0 +1,53 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_view_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-bordered" align="center">
+    <tr>
+      <td><img src="{{data.image}}" height="80" width="80"/></td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td>{{data.name}}</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>{{data.gender}}</td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>{{data.dob}}</td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td>{{data.district}}</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>{{data.city}}</td>
+    </tr>
+    <tr>
+      <td>House name </td>
+      <td>{{data.house_name}}</td>
+    </tr>
+    <tr>
+      <td>Pin </td>
+      <td>{{data.pin}}</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>{{data.phone}}</td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td>{{data.email}}</td>
+    </tr>
+    <tr>
+      <td>Work description </td>
+      <td>{{data.description}}</td>
+    </tr>
+      <tr><td align="center" colspan="2"><a href="/newapp/workers_edit_profile/" class="btn btn-info">EDIT</a></td></tr>
+
+  </table>
+</form>
+{% endblock %}

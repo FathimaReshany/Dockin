@@ -1,0 +1,23 @@
+{% extends "company_index.html" %}
+{% block body %}
+<form action="/newapp/add_vaccancy_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table border="1" style="width:500px;" align="center" class="table table-bordered">
+    <tr>
+      <td>Title</td>
+      <td><input type="text" name="textfield" value="" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td><input type="text" name="textfield8" value="" class="form-control" required/></td>
+    </tr>
+   
+    <tr>
+      <td>Apply before </td>
+      <td><input type="date" name="textfield2" value="" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

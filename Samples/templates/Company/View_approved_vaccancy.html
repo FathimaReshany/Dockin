@@ -1,0 +1,47 @@
+{% extends "company_index.html" %}
+{% block body %}
+<form id="form1" name="form1" method="post" action="/newapp/view_approved_vaccancy_post/">
+  <table align="right" >
+    <tr>
+      <td>Vaccancy</td>
+      <td><select name="select" class="form-control">
+        {% for i in vaccancy_obj %}
+        <option value="{{ i.id }}">{{i.title}}
+        </option>
+        {% endfor %}
+      </select>
+      </td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>Date</td>
+      <td>Vaccancy</td>
+      <td>Worker name </td>
+      <td>Address</td>
+      
+      <td>Status</td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{i.vaccancy_request_date}}</td>
+      <td>{{i.VACCANCY.title}}</td>
+      <td>{{i.WORKER.name}}</td>
+      <td>{{i.WORKER.district}}<br>
+          {{i.WORKER.city}}<br>
+          {{i.WORKER.pin}}<br>
+          {{i.WORKER.phone}}<br>
+
+    </td>
+      <td>{{i.status}}</td>
+      
+      <td><a href="/newapp/view_approved_vaccancy2/{{i.WORKER.id}}/{{i.id}}" class="btn btn-info">More</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}

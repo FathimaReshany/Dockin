@@ -1,0 +1,51 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_view_complaint_from_user_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table  align="right"   >
+    <tr>
+      <td>Date from </td>
+      <td><input type="date" name="textfield" class="form-control" /></td>
+      <td>to</td>
+      <td><input type="date" name="textfield2" class="form-control" /></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table  class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>Complaint from </td>
+      <td>User type</td>
+      <td>Complaint date </td>
+      <td>Complaint</td>
+      <td>Status</td>
+
+      
+      
+    </tr>
+{% for i in data %}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td align="center"><img src="{{ i.image }}" height="80" width="80"/><br>{{i.name}}</td>
+
+          Email :{{i.email}} <br>
+          Phone :{{i.phone}} 
+      </td>
+      <td>{{i.type}}</td>
+
+      <td>{{i.date}}</td>
+      <td>{{i.complaint}}</td>
+      <td>{{i.status}}</td>
+      
+      <td>
+        {% if i.status == "pending" %}
+            <a href="/newapp/admin_send_reply/{{i.cid}}" class="btn btn-info">Reply</a>
+        {% else %}
+            {{i.reply}}
+        {% endif %} 
+        </td>
+    </tr>
+{% endfor %}
+  </table>
+
+</form>
+{% endblock %}

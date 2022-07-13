@@ -1,0 +1,14 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_send_complaint_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table class="table table-bordered">
+    <tr>
+      <td>Complaint</td>
+      <td><textarea name="textarea" class="form-control" required></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Send" class="btn btn-success"  onclick="return confirm('Are you sure to send?')"/></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

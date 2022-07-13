@@ -1,0 +1,60 @@
+{% extends "company_index.html" %}
+{% block body %}
+<form action="/newapp/company_edit_profile_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table border="1" style="width:500px;" align="center" class="table table-bordered">
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="textfield" value="{{data.company_name}}" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Established in </td>
+      <td><input type="date" name="textfield8" value="{{data.year}}" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td>Image</td>
+      <td><input type="file" name="file"  value="{{data.image}}" class="form-control" />      </td>
+    </tr>
+    <tr>
+        <td>State</td>
+      <td><select name="select" class="form-control">
+        <option value="{{data.state}}"> {{data.state}}</option>
+        <option>Kerala</option>
+        <option>Karnataka</option>
+        <option>Tamilnadu</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>District</td>
+      <td><select name="select1" class="form-control">
+        <option value="{{data.district}}"> {{data.district}}</option>
+        <option>Calicut</option>
+        <option>Wayanad</option>
+        <option>Malappuram</option>
+      </select>      </td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td><input type="text" name="textfield3" value="{{data.city}}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Pin</td>
+      <td><input type="text" name="textfield5" value="{{data.pin}}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td><input type="text" name="textfield6" value="{{data.phone}}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Email</td>
+      <td><input type="email" name="textfield7" value="{{data.email}}" class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Company description </td>
+      <td><textarea name="textarea" class="form-control">{{ data.description}}</textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Update" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

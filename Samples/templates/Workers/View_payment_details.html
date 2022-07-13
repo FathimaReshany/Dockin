@@ -1,0 +1,97 @@
+
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="" method="post" enctype="multipart/form-data" name="form1" id="form1">
+
+<div id="my_div">
+    <div class="container">
+        <br><br>
+        <h1><u>PAYMENT REPORT</u></h1>
+        <br><br>
+        <h3>WORK DETAILS</h3>
+
+        <table>
+            <tr>
+                <td width="200">
+                    <img src="{{ data2.work_image }}" height="200" width="200"/>
+                </td>
+                <td><b>Title</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;{{ data2.title }}<br>
+                    <b>Amount</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;{{ data2.amount }}<br>
+                    <b>Requested On</b>&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data2.req_date }}</td>
+
+            </tr>
+        </table>
+        <br>
+         <h3>CUSTOMER DETAILS</h3>
+            <table>
+                <tr>
+                    <td width="200">
+                        <img src="{{ data2.user_image }}"  height="200" width="200"/>
+                    </td>
+                    <td>
+                    <b>Name</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data2.user_name }}<br>
+                    <b>Address</b>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;{{ data2.house_name }},
+                         {{ data2.district }},
+                         {{ data2.city }},
+                         {{ data2.pin }}<br>
+                    <b>CONTACT</b>&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ data2.phone }}<br>
+                    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;{{ data2.email }}
+                    </td>
+                </tr>
+
+            </table>
+
+        <br><br>
+        <br><br>
+        <h3>PAYMENT INFORMATION</h3>
+        <table class="table table-bordered">
+            <tr>
+                <th>SL.NO</th>
+                <th>PAYMENT DATE</th>
+                <th>PAYMENT TYPE</th>
+                <th>AMOUNT</th>
+                <th>ACCOUNT NUMBER</th>
+            </tr>
+            {% for i in data %}
+            <tr>
+                <th>{{ forloop.counter }}</th>
+                <th>{{ i.payment_date }}</th>
+                <th>{{ i.type }}</th>
+                <th>{{ i.amount }}</th>
+                <th>{{ i.account }}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    <br><br>
+    </div>
+</div>
+<div align="right">
+    <button onclick="printDiv('my_div','Title')" class="btn btn-success">Download</button>
+    &emsp;&emsp;
+  </div>&nbsp;&nbsp;&nbsp;
+  <br>
+</form>
+<script>
+var doc = new jsPDF();
+
+ function printDiv(divId,
+  title) {
+
+  let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+  mywindow.document.write(`<html><head><title>${title}</title>`);
+  mywindow.document.write('</head><body >');
+  mywindow.document.write(document.getElementById(divId).innerHTML);
+  mywindow.document.write('</body></html>');
+
+  mywindow.document.close(); // necessary for IE >= 10
+  mywindow.focus(); // necessary for IE >= 10*/
+
+  mywindow.print();
+  // mywindow.close();
+
+  return true;
+}
+</script>
+
+{% endblock %}

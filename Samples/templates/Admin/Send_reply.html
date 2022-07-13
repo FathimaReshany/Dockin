@@ -1,0 +1,22 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_send_reply_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table  style="width:500px;" align="center" class="table table-bordered" border="1">
+    <tr>
+      <td>Complaint</td>
+      <td>{{ data.complaint }}</td>
+    </tr>
+    <tr>
+      <td>Complaint date </td>
+      <td>{{ data.complaint_date }}</td>
+    </tr>
+    <tr>
+      <td>Reply</td>
+      <td><textarea name="textarea" class="form-control" required></textarea></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Send" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

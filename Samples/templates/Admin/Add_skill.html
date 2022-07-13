@@ -1,0 +1,14 @@
+{% extends "admin_index2.html" %}
+{% block body %}
+<form action="/newapp/admin_addskill_load_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table style="width:500px;" align="center" class="table table-bordered">
+    <tr>
+      <td>Skill</td>
+      <td><input type="text" name="textfield" class="form-control" required/></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center"><input type="submit" name="Submit" value="Add" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

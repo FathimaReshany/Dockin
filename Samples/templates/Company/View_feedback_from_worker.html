@@ -1,0 +1,40 @@
+
+{% extends "company_index.html" %}
+{% block body %}
+<form action="/newapp/view_feedback_from_worker_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table  align="right">
+    <tr>
+      <td>Date from </td>
+      <td><input type="date" name="textfield" class="form-control"/></td>
+      <td>To</td>
+      <td><input type="date" name="textfield2" class="form-control"/></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+    {% for i in data %}
+    <br>
+    <table class="table table-bordered">
+      <tr>
+        <td rowspan="4"><img src="{{i.wimage}}" height="100" width="100"/></td>
+        <th>Name</th>
+        <td>{{ i.wname }}</td>
+      </tr>
+      <tr>
+        <th>Email</th>
+        <td>{{ i.wemail }}</td>
+      </tr>
+      <tr>
+        <th>Phone</th>
+        <td>{{i.wphone }}</td>
+      </tr>
+      <tr>
+        <th>Posted on</th>
+        <td>{{i.feedback_date}}</td>
+      </tr>
+      <tr>
+        <td colspan="3">Feedback :<br><b>{{i.feedback}}</b></td>
+      </tr>
+    </table>
+    {% endfor %}
+</form>
+{% endblock %}

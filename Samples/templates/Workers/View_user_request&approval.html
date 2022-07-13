@@ -1,0 +1,49 @@
+{% extends "worker_index.html" %}
+{% block body %}
+<form action="/newapp/workers_view_user_request_and_approval_post/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+  <table align="right">
+    <tr>
+      
+      <td><input type="text" name="textfield" class="form-control"/></td>
+      <td><input type="submit" name="Submit" value="Search" class="btn btn-success" /></td>
+    </tr>
+  </table>
+  <table class="table table-bordered">
+    <tr>
+      <td>sl.no</td>
+      <td>Date</td>
+      <td>User info</td>
+      <td>Work</td>
+      <td>Status</td>
+      <td>&nbsp;</td>
+    </tr>
+    {% for i in data%}
+    <tr>
+      <td>{{ forloop.counter }}</td>
+      <td>{{i.work_request_date}}</td>
+      <td>
+        <img src="{{i.USER.image}}" height="50" width="50"/><br>
+        {{i.USER.name}}<br>
+
+        {{i.USER.district}}<br>
+        {{i.USER.phone}}<br>
+        {{i.USER.email}}<br>
+      </td>
+      <td>{{i.WORKS.title}}</td>
+      <td>
+          {% if i.status == 'pending' %}
+        <a href="/newapp/workers_approve_user_request/{{i.id}}" class="btn btn-success">Approve</a>
+          <a href="/newapp/workers_reject_user_request/{{i.id}}" class="btn btn-danger" onclick="return confirm('Are you sure to reject?')">Reject</a>
+          {% else %}
+            {{i.status}}<br>
+              <a href="/newapp/wokers_view_payment_details/{{ i.id }}" class="btn btn-link">Payment Info</a>
+          {% endif %}
+
+
+      </td>
+      <td><a href="/newapp/workers_chat_with_user/{{ i.USER.id }}">Chat</a></td>
+    </tr>
+    {% endfor %}
+  </table>
+</form>
+{% endblock %}
